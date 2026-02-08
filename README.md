@@ -1,2 +1,2 @@
-# Boilerplates
-Boiler plate codes for frontend, backend
+# Ionic Boilerplate code
+Boilerplate code for frontend (MOBILE/DESKTOP/WEB)
