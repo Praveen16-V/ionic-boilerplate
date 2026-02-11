@@ -1,0 +1,21 @@
+{
+  "name": "Ionic Boilerplate",
+  "short_name": "Ionic App",
+  "description": "A modern cross-platform application built with Ionic and Angular",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#3880ff",
+  "theme_color": "#3880ff",
+  "orientation": "portrait",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "assets/icon/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": ["productivity", "utilities"],
+  "lang": "en",
+  "dir": "ltr"
+}

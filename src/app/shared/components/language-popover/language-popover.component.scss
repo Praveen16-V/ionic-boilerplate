@@ -1,0 +1,22 @@
+ion-list {
+  min-width: 200px;
+}
+
+ion-item {
+  cursor: pointer;
+  
+  &.selected {
+    --background: var(--ion-color-light);
+  }
+  
+  h2 {
+    font-weight: 600;
+    margin: 0;
+  }
+  
+  p {
+    margin: 0;
+    color: var(--ion-color-medium);
+    font-size: 0.9rem;
+  }
+}

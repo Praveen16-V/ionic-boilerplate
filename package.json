@@ -1,0 +1,72 @@
+{
+  "name": "ionic-boilerplate",
+  "version": "1.0.0",
+  "description": "Boilerplate code for frontend (MOBILE/DESKTOP/WEB)",
+  "main": "index.js",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ionic build",
+    "watch": "ionic build --watch",
+    "test": "ng test",
+    "ionic:build": "ng build",
+    "ionic:serve": "ng serve",
+    "android": "npx cap sync android && npx cap open android",
+    "ios": "npx cap sync ios && npx cap open ios",
+    "electron": "npx cap sync electron && npx cap run electron"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Praveen16-V/ionic-boilerplate.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Praveen16-V/ionic-boilerplate/issues"
+  },
+  "homepage": "https://github.com/Praveen16-V/ionic-boilerplate#readme",
+  "dependencies": {
+    "@angular/animations": "^21.1.3",
+    "@angular/common": "^21.1.3",
+    "@angular/core": "^21.1.3",
+    "@angular/forms": "^21.1.3",
+    "@angular/localize": "^21.1.3",
+    "@angular/platform-browser": "^21.1.3",
+    "@angular/platform-browser-dynamic": "^21.1.3",
+    "@angular/router": "^21.1.3",
+    "@capacitor/android": "^8.0.2",
+    "@capacitor/app": "^8.0.0",
+    "@capacitor/camera": "^8.0.0",
+    "@capacitor/core": "^8.0.2",
+    "@capacitor/device": "^8.0.0",
+    "@capacitor/geolocation": "^8.0.0",
+    "@capacitor/haptics": "^8.0.0",
+    "@capacitor/ios": "^8.0.2",
+    "@capacitor/keyboard": "^8.0.0",
+    "@capacitor/local-notifications": "^8.0.0",
+    "@capacitor/network": "^8.0.0",
+    "@capacitor/preferences": "^8.0.0",
+    "@capacitor/status-bar": "^8.0.0",
+    "@ionic/angular": "^8.7.17",
+    "@ngx-translate/core": "^17.0.0",
+    "@ngx-translate/http-loader": "^17.0.0",
+    "@sentry/angular": "^10.38.0",
+    "@sentry/tracing": "^7.120.4",
+    "rxjs": "^7.8.2",
+    "typescript": "^5.9.3",
+    "zone.js": "^0.16.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^21.1.3",
+    "@angular-devkit/core": "^21.1.3",
+    "@angular-devkit/schematics": "^21.1.3",
+    "@angular/cli": "^21.1.3",
+    "@angular/compiler": "^21.1.3",
+    "@angular/compiler-cli": "^21.1.3",
+    "@capacitor/cli": "^8.0.2",
+    "@capacitor/electron": "^2.5.0",
+    "@schematics/angular": "^21.1.3",
+    "electron": "^40.2.1"
+  }
+}

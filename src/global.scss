@@ -1,0 +1,359 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import "~@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+/* Global header styles */
+.app-header {
+  background: var(--ion-toolbar-background);
+  border-bottom: 1px solid var(--ion-color-light);
+  padding: 0;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  left: 0;
+  right: 0;
+
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 60px;
+    padding: 0;
+  }
+
+  .header-brand {
+    padding-left: 1rem;
+
+    h1 {
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--ion-text-color);
+    }
+  }
+
+  .header-nav {
+    display: flex;
+    gap: 2rem;
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--ion-text-color);
+      font-weight: 500;
+      transition: color 0.2s;
+      cursor: pointer;
+
+      &:hover {
+        color: var(--ion-color-primary);
+      }
+
+      &.active {
+        color: var(--ion-color-primary);
+      }
+    }
+  }
+
+  .header-controls {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 0.5rem;
+
+    ion-button {
+      cursor: pointer;
+    }
+
+    .language-selector {
+      --placeholder-color: var(--ion-text-color);
+      cursor: pointer;
+    }
+
+    .theme-toggle {
+      --color: var(--ion-text-color);
+      cursor: pointer;
+    }
+
+    .user-section {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+
+      .user-name {
+        margin-left: 0.25rem;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+/* Responsive design for different platforms */
+@media (max-width: 767px) {
+  /* Mobile styles */
+  .app-header {
+    display: none;
+  }
+
+  ion-tabs {
+    display: block !important;
+  }
+
+  /* Ensure tab bar respects safe area and is positioned at bottom */
+  ion-tab-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    padding-bottom: env(safe-area-inset-bottom);
+    background: var(--ion-toolbar-background);
+    border-top: 1px solid var(--ion-border-color);
+  }
+
+  /* Mobile tabs should only be visible on mobile */
+  .mobile-tabs {
+    display: block !important;
+  }
+}
+
+/* Hide mobile elements on desktop and tablet */
+@media (min-width: 768px) {
+  .mobile-tabs {
+    display: none !important;
+  }
+
+  .ion-page {
+    width: 100%;
+    height: calc(100vh - 60px); /* Subtract header height on tablet+ */
+    padding: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Desktop styles */
+  .mobile-tabs {
+    display: none !important;
+  }
+
+  .ion-page {
+    width: 100%;
+    height: calc(100vh - 60px); /* Subtract header height on desktop */
+    padding: 0;
+  }
+
+  .app-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+}
+
+/* Smooth transitions for theme switching */
+* {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+/* Custom utility classes */
+.text-center {
+  text-align: center;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.full-height {
+  height: 100vh;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.justify-content-end {
+  justify-content: flex-end;
+}
+
+.gap-small {
+  gap: 0.25rem;
+}
+
+.gap-medium {
+  gap: 0.5rem;
+}
+
+.gap-large {
+  gap: 2rem;
+}
+
+.padding-small {
+  padding: 0.25rem;
+}
+
+.padding-medium {
+  padding: 0.5rem;
+}
+
+.padding-large {
+  padding: 1rem;
+}
+
+.margin-left-small {
+  margin-left: 0.25rem;
+}
+
+.font-weight-medium {
+  font-weight: 500;
+}
+
+.font-weight-semibold {
+  font-weight: 600;
+}
+
+.transition-colors {
+  transition: color 0.2s ease;
+}
+
+/* Hide mobile elements on desktop */
+@media (min-width: 768px) {
+  .mobile-only {
+    display: none !important;
+  }
+}
+
+/* Hide desktop elements on mobile */
+@media (max-width: 767px) {
+  .desktop-only {
+    display: none !important;
+  }
+}
+
+/* Ensure all pages take full height and use theme variables */
+ion-router-outlet {
+  height: 100vh;
+}
+
+/* Default page styles for desktop/tablet with header */
+.ion-page {
+  height: calc(100vh - 60px); /* Subtract header height */
+  display: flex;
+  flex-direction: column;
+  background: var(--ion-background-color);
+  color: var(--ion-text-color);
+}
+
+ion-content {
+  flex: 1;
+  overflow-y: auto;
+  --background: var(--ion-background-color);
+}
+
+/* Mobile-specific overrides - these take precedence */
+@media (max-width: 767px) {
+  .ion-page {
+    height: 100vh !important; /* Override global style - full height on mobile */
+    padding-bottom: 100px; /* Space for tab bar */
+    padding-top: env(safe-area-inset-top); /* Safe area for notch */
+    padding-left: env(safe-area-inset-left); /* Safe area for side */
+    padding-right: env(safe-area-inset-right); /* Safe area for side */
+  }
+}
+
+/* Ensure app container takes full height */
+ion-app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--ion-background-color);
+  color: var(--ion-text-color);
+}
+
+/* Theme-aware card styling */
+ion-card {
+  background: var(--ion-card-background);
+  color: var(--ion-text-color);
+  border: 1px solid var(--ion-border-color);
+}
+
+ion-card-title {
+  color: var(--ion-text-color);
+}
+
+ion-card-subtitle {
+  color: var(--ion-color-medium);
+}
+
+ion-card-content {
+  color: var(--ion-color-medium);
+}
+
+/* Theme-aware item styling */
+ion-item {
+  --background: var(--ion-item-background);
+  --color: var(--ion-text-color);
+  --border-color: var(--ion-item-border-color);
+}
+
+/* Theme-aware toolbar styling */
+ion-toolbar {
+  --background: var(--ion-toolbar-background);
+  --color: var(--ion-text-color);
+  --border-color: var(--ion-toolbar-border-color);
+}
+
+/* Theme-aware tab bar styling */
+ion-tab-bar {
+  --background: var(--ion-tab-bar-background);
+  --border-color: var(--ion-tab-bar-border-color);
+}
+
+ion-tab-button {
+  --color: var(--ion-color-medium);
+  --color-selected: var(--ion-color-primary);
+}

@@ -1,0 +1,54 @@
+<ion-content>
+  <div class="ion-padding">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{ 'about.title' | translate }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>{{ 'about.description' | translate }}</p>
+
+        <h3>{{ 'about.features' | translate }}</h3>
+        <ul>
+          <li>✅ Cross-platform support (Web, Android, iOS, Desktop)</li>
+          <li>✅ Responsive design for all screen sizes</li>
+          <li>✅ Modern UI components with Ionic</li>
+          <li>✅ Multi-language support (English, Tamil, Hindi)</li>
+          <li>✅ Light and dark theme support</li>
+          <li>✅ Progressive Web App ready</li>
+          <li>✅ Secure authentication system</li>
+          <li>✅ HTTP interceptors for API calls</li>
+        </ul>
+
+        <h3>{{ 'about.technologies' | translate }}</h3>
+        <div class="tech-stack">
+          <ion-chip color="primary">Angular 21</ion-chip>
+          <ion-chip color="secondary">Ionic 8</ion-chip>
+          <ion-chip color="tertiary">Capacitor 8</ion-chip>
+          <ion-chip color="success">TypeScript</ion-chip>
+          <ion-chip color="warning">SCSS</ion-chip>
+          <ion-chip color="medium">RxJS</ion-chip>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Version Information</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label>Version</ion-label>
+          <ion-note slot="end">1.0.0</ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-label>Build</ion-label>
+          <ion-note slot="end">2024.02.08</ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-label>Framework</ion-label>
+          <ion-note slot="end">Ionic Angular</ion-note>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

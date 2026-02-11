@@ -1,0 +1,56 @@
+<header class="app-header">
+  <div class="header-container">
+    <!-- Logo/Brand -->
+    <div class="header-brand">
+      <h1>{{ "common.welcome" | translate }}</h1>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="header-nav">
+      <a routerLink="/home" routerLinkActive="active" class="nav-link">{{
+        "common.home" | translate
+      }}</a>
+      <a routerLink="/about" routerLinkActive="active" class="nav-link">{{
+        "common.about" | translate
+      }}</a>
+    </nav>
+
+    <!-- Controls -->
+    <div class="header-controls">
+      <!-- Language Selector -->
+      <ion-button
+        fill="clear"
+        (click)="openLanguagePopover($event)"
+        class="language-selector"
+      >
+        <ion-icon name="language-outline"></ion-icon>
+      </ion-button>
+
+      <!-- Theme Toggle -->
+      <ion-button fill="clear" (click)="toggleTheme()" class="theme-toggle">
+        <ion-icon [name]="isDarkMode() ? 'sunny-outline' : 'moon-outline'">
+        </ion-icon>
+      </ion-button>
+
+      <!-- User Profile/Login -->
+      <div class="user-section">
+        <ng-container *ngIf="currentUser$ | async as user; else loginSection">
+          <ion-button fill="clear" (click)="navigateToProfile()">
+            <ion-icon name="person-outline"></ion-icon>
+            <span class="user-name">{{ user.name }}</span>
+          </ion-button>
+          <ion-button fill="clear" (click)="logout()">
+            <ion-icon name="log-out-outline"></ion-icon>
+          </ion-button>
+        </ng-container>
+
+        <ng-template #loginSection>
+          <ion-button fill="clear" (click)="navigateToLogin()">
+            <ion-icon name="log-in-outline"></ion-icon>
+            <span>{{ "common.login" | translate }}</span>
+          </ion-button>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</header>

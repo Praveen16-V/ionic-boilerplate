@@ -1,0 +1,102 @@
+<div class="home-container">
+  <ion-content class="ion-padding">
+    <!-- Welcome Card -->
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Welcome to Ionic Boilerplate</ion-card-title>
+        <ion-card-subtitle
+          >A modern cross-platform application</ion-card-subtitle
+        >
+      </ion-card-header>
+      <ion-card-content>
+        <p>
+          This is a feature-rich Ionic application with Angular, built with best
+          practices and modern development patterns.
+        </p>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Features Grid -->
+    <div class="features-section">
+      <h2>Features</h2>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12" size-md="6">
+            <ion-card button (click)="navigateToAbout()">
+              <ion-card-header>
+                <ion-icon
+                  name="information-circle-outline"
+                  class="feature-icon"
+                ></ion-icon>
+                <ion-card-title>About</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                Learn more about this application and its capabilities.
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+
+          <ion-col size="12" size-md="6">
+            <ion-card button (click)="openLanguageModal()">
+              <ion-card-header>
+                <ion-icon
+                  name="language-outline"
+                  class="feature-icon"
+                ></ion-icon>
+                <ion-card-title>Multi-language</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                Switch between different languages with ngx-translate.
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+
+          <ion-col size="12" size-md="6">
+            <ion-card button (click)="toggleTheme()">
+              <ion-card-header>
+                <ion-icon name="moon-outline" class="feature-icon"></ion-icon>
+                <ion-card-title>Dark Mode</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                Toggle between light and dark themes.
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+
+          <ion-col size="12" size-md="6">
+            <ion-card button (click)="navigateToProfile()">
+              <ion-card-header>
+                <ion-icon name="person-outline" class="feature-icon"></ion-icon>
+                <ion-card-title>Profile</ion-card-title>
+              </ion-card-header>
+              <ion-card-content>
+                Manage your profile and account settings.
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <!-- Quick Stats -->
+    <div class="stats-section">
+      <h2>Quick Stats</h2>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6">
+            <div class="stat-item">
+              <h3>{{ userCount }}</h3>
+              <p>Active Users</p>
+            </div>
+          </ion-col>
+          <ion-col size="6">
+            <div class="stat-item">
+              <h3>{{ featureCount }}</h3>
+              <p>Features</p>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </ion-content>
+</div>
