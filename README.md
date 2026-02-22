@@ -1,21 +1,24 @@
 # Ionic Cross-Platform Application
 
-A modern Ionic application that works seamlessly across web, mobile (Android/iOS), and desktop platforms.
+A modern Ionic application that works seamlessly across web, mobile (Android/iOS), and desktop platforms with internationalization, theming, and authentication support.
 
 ## Features
 
 - ✅ **Web Browser Support** - Runs in any modern web browser
 - ✅ **Android Support** - Native Android app via Capacitor
-- ✅ **iOS Support** - Native iOS app via Capacitor  
+- ✅ **iOS Support** - Native iOS app via Capacitor
 - ✅ **Desktop Support** - Electron-based desktop application
-- ✅ **Responsive Design** - Adapts to different screen sizes
+- ✅ **Responsive Design** - Adapts to different screen sizes with mobile-first approach
 - ✅ **Modern UI** - Built with Ionic Framework and Angular
-- ✅ **Tab Navigation** - Mobile-first navigation system
-- ✅ **Form Validation** - Real-time form validation with error messages
+- ✅ **Router-based Navigation** - Clean URL-based navigation system
+- ✅ **Mobile Tab Navigation** - Bottom tab bar for mobile devices
+- ✅ **Internationalization** - Multi-language support with ngx-translate
+- ✅ **Dark/Light Theme** - Dynamic theme switching with system preference detection
+- ✅ **Authentication System** - User authentication with profile management
 - ✅ **Error Handling** - Comprehensive error handling with user-friendly messages
 - ✅ **Loading States** - Consistent loading indicators across the app
 - ✅ **Platform Detection** - Automatic platform detection and adaptation
-- ✅ **Device Features** - Camera, geolocation, notifications support
+- ✅ **Device Features Ready** - Camera, geolocation, notifications plugins installed
 - ✅ **TypeScript** - Full TypeScript support for type safety
 
 ## Tech Stack
@@ -24,13 +27,15 @@ A modern Ionic application that works seamlessly across web, mobile (Android/iOS
 - **Cross-Platform**: Capacitor 8
 - **Desktop**: Electron
 - **Styling**: SCSS with Ionic variables
+- **Internationalization**: ngx-translate
+- **Error Tracking**: Sentry
 - **Build Tool**: Angular CLI
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js 18+ 
+- Node.js 18+
 - npm or yarn
 - For mobile development: Android Studio / Xcode
 - For desktop development: Electron (included)
@@ -65,12 +70,14 @@ npm run watch
 ### Platform-Specific Development
 
 #### Web
+
 ```bash
 npm start
 # Opens at http://localhost:4200
 ```
 
 #### Android
+
 ```bash
 # Build the web app first
 npm run build
@@ -83,6 +90,7 @@ npx cap open android
 ```
 
 #### iOS
+
 ```bash
 # Build the web app first
 npm run build
@@ -95,6 +103,7 @@ npx cap open ios
 ```
 
 #### Desktop (Electron)
+
 ```bash
 # Build the web app first
 npm run build
@@ -111,26 +120,36 @@ npx cap run electron
 ```
 src/
 ├── app/                           # Angular application
-│   ├── home/                     # Home page module
-│   ├── about/                    # About page module
-│   ├── contact/                  # Contact page with form validation
-│   ├── settings/                 # Settings page
-│   ├── tabs/                     # Tab navigation system
-│   ├── services/                 # Shared services
+│   ├── core/                      # Core application functionality
+│   │   ├── config/                # Configuration files
+│   │   ├── guards/                # Route guards
+│   │   ├── interceptors/          # HTTP interceptors
+│   │   ├── interfaces/            # TypeScript interfaces
+│   │   └── services/              # Core services (auth, theme, translation)
+│   ├── pages/                     # Page components
+│   │   ├── home/                  # Home page
+│   │   └── about/                 # About page
+│   ├── shared/                    # Shared components
+│   │   ├── components/            # Reusable components
+│   │   │   ├── app-header/        # Desktop/web header
+│   │   │   ├── mobile-tabs/       # Mobile bottom navigation
+│   │   │   └── language-popover/  # Language selection popover
+│   │   └── pipes/                 # Custom pipes
+│   ├── services/                  # Shared services
 │   │   ├── platform.service.ts    # Platform detection service
 │   │   ├── error-handler.service.ts # Error handling service
 │   │   ├── loading.service.ts     # Loading state management
 │   │   └── index.ts             # Service exports
-│   ├── app.module.ts             # Root module
 │   ├── app.component.ts           # Root component
-│   └── app-routing.module.ts     # App routing
+│   ├── app.config.ts              # Application configuration
+│   └── app.routes.ts              # App routing
 ├── assets/                       # Static assets
+│   └── i18n/                     # Internationalization files
 ├── environments/                 # Environment configurations
 ├── theme/                       # Ionic theme variables
 ├── global.scss                  # Global styles
 ├── index.html                   # Main HTML file
-├── main.ts                     # Application entry point
-└── polyfills.ts                # Browser polyfills
+└── main.ts                     # Application entry point
 ```
 
 ## Available Scripts
@@ -139,18 +158,43 @@ src/
 - `npm run build` - Build for production
 - `npm run watch` - Watch and rebuild on changes
 - `npm test` - Run unit tests
+- `npm run android` - Build and open Android Studio
+- `npm run ios` - Build and open Xcode
+- `npm run electron` - Build and run desktop app
 - `npx cap sync` - Sync web assets to native platforms
 - `npx cap open [platform]` - Open platform-specific IDE
 - `npx cap run [platform]` - Run on specific platform
 
+## Key Features
+
+### Navigation
+
+- **Desktop/Web**: Top header navigation with clean routing
+- **Mobile**: Bottom tab navigation with quick access to main features
+- **Router-based**: Clean URLs with proper route guards
+
+### User Experience
+
+- **Internationalization**: Support for multiple languages with dynamic switching
+- **Theming**: Dark/light mode toggle with system preference detection
+- **Responsive**: Adaptive layout for different screen sizes
+- **Authentication**: Complete auth system with login/logout and profile management
+
+### Development Features
+
+- **Type Safety**: Full TypeScript implementation
+- **Error Handling**: Centralized error handling with Sentry integration
+- **Loading States**: Consistent loading indicators throughout the app
+- **Platform Detection**: Automatic adaptation to different platforms
+
 ## Platform Support
 
-| Platform | Status | Notes |
-|----------|--------|-------|
-| Web | ✅ Full Support | Modern browsers |
-| Android | ✅ Full Support | Android 7+ |
-| iOS | ✅ Full Support | iOS 12+ |
-| Desktop | ✅ Full Support | Windows, macOS, Linux |
+| Platform | Status          | Notes                 |
+| -------- | --------------- | --------------------- |
+| Web      | ✅ Full Support | Modern browsers       |
+| Android  | ✅ Full Support | Android 7+            |
+| iOS      | ✅ Full Support | iOS 12+               |
+| Desktop  | ✅ Full Support | Windows, macOS, Linux |
 
 ## Contributing
 
