@@ -1,20 +1,20 @@
-import { Injectable } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
-import { Preferences } from '@capacitor/preferences';
-import { Platform } from '@ionic/angular';
-import { environment } from '../../../environments/environment';
+import { Injectable } from "@angular/core";
+import { TranslateService } from "@ngx-translate/core";
+import { Preferences } from "@capacitor/preferences";
+import { Platform } from "@ionic/angular";
+import { environment } from "../../../environments/environment";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class I18nService {
-  private readonly LANGUAGE_KEY = 'selected_language';
-  private readonly DEFAULT_LANGUAGE = 'en';
-  private readonly SUPPORTED_LANGUAGES = ['en', 'ta', 'hi'];
+  private readonly LANGUAGE_KEY = "selected_language";
+  private readonly DEFAULT_LANGUAGE = "en";
+  private readonly SUPPORTED_LANGUAGES = ["en", "ta", "hi"];
 
   constructor(
     private translate: TranslateService,
-    private platform: Platform
+    private platform: Platform,
   ) {
     this.initializeTranslation();
   }
@@ -29,17 +29,24 @@ export class I18nService {
     // Get saved language or detect browser language
     const savedLanguage = await this.getSavedLanguage();
     const browserLanguage = this.translate.getBrowserLang();
-    
+
     // Use saved language, browser language, or default
-    const language = savedLanguage || 
-      (browserLanguage && this.SUPPORTED_LANGUAGES.includes(browserLanguage) ? browserLanguage : this.DEFAULT_LANGUAGE);
-    
-    this.setLanguage(language);
+    const language =
+      savedLanguage ||
+      (browserLanguage && this.SUPPORTED_LANGUAGES.includes(browserLanguage)
+        ? browserLanguage
+        : this.DEFAULT_LANGUAGE);
+
+    // Only set the language, don't preload all languages
+    this.translate.setDefaultLang(this.DEFAULT_LANGUAGE);
+    await this.setLanguage(language);
   }
 
   async setLanguage(language: string): Promise<void> {
     if (!this.SUPPORTED_LANGUAGES.includes(language)) {
-      console.warn(`Language '${language}' is not supported. Using default language.`);
+      console.warn(
+        `Language '${language}' is not supported. Using default language.`,
+      );
       language = this.DEFAULT_LANGUAGE;
     }
 
@@ -47,17 +54,17 @@ export class I18nService {
       await this.translate.use(language).toPromise();
       await Preferences.set({
         key: this.LANGUAGE_KEY,
-        value: language
+        value: language,
       });
-      
+
       // Update document direction for RTL languages if needed
       this.updateDocumentDirection(language);
-      
+
       if (environment.features.debugMode) {
         console.log(`Language set to: ${language}`);
       }
     } catch (error) {
-      console.error('Error setting language:', error);
+      console.error("Error setting language:", error);
       // Fallback to default language
       await this.translate.use(this.DEFAULT_LANGUAGE).toPromise();
     }
@@ -68,7 +75,7 @@ export class I18nService {
       const { value } = await Preferences.get({ key: this.LANGUAGE_KEY });
       return value;
     } catch (error) {
-      console.error('Error getting saved language:', error);
+      console.error("Error getting saved language:", error);
       return null;
     }
   }
@@ -77,11 +84,16 @@ export class I18nService {
     return this.translate.currentLang || this.DEFAULT_LANGUAGE;
   }
 
-  getSupportedLanguages(): Array<{ code: string; name: string; nativeName: string; flag: string }> {
+  getSupportedLanguages(): Array<{
+    code: string;
+    name: string;
+    nativeName: string;
+    flag: string;
+  }> {
     return [
-      { code: 'en', name: 'English', nativeName: 'English', flag: 'US' },
-      { code: 'ta', name: 'Tamil', nativeName: 'தமிழ்', flag: 'TN' },
-      { code: 'hi', name: 'Hindi', nativeName: 'हिन्दी', flag: 'HI' }
+      { code: "en", name: "English", nativeName: "English", flag: "US" },
+      { code: "ta", name: "Tamil", nativeName: "தமிழ்", flag: "TN" },
+      { code: "hi", name: "Hindi", nativeName: "हिन्दी", flag: "HI" },
     ];
   }
 
@@ -89,16 +101,19 @@ export class I18nService {
     return this.translate.instant(key, interpolateParams);
   }
 
-  async translateAsync(key: string | string[], interpolateParams?: Object): Promise<string> {
+  async translateAsync(
+    key: string | string[],
+    interpolateParams?: Object,
+  ): Promise<string> {
     return await this.translate.get(key, interpolateParams).toPromise();
   }
 
   private updateDocumentDirection(language: string): void {
     // Add RTL languages here if needed
-    const rtlLanguages = ['ar', 'he', 'fa'];
-    const direction = rtlLanguages.includes(language) ? 'rtl' : 'ltr';
-    
-    if (this.platform.is('capacitor')) {
+    const rtlLanguages = ["ar", "he", "fa"];
+    const direction = rtlLanguages.includes(language) ? "rtl" : "ltr";
+
+    if (this.platform.is("capacitor")) {
       // For native platforms, you might need to handle this differently
       document.documentElement.dir = direction;
     } else {
@@ -111,7 +126,9 @@ export class I18nService {
   }
 
   getLanguageDisplayName(languageCode: string): string {
-    const language = this.getSupportedLanguages().find(lang => lang.code === languageCode);
+    const language = this.getSupportedLanguages().find(
+      (lang) => lang.code === languageCode,
+    );
     return language ? language.nativeName : languageCode;
   }
 
@@ -138,11 +155,11 @@ export class I18nService {
   }
 
   // Method to format currency according to current locale
-  formatCurrency(amount: number, currency: string = 'USD'): string {
+  formatCurrency(amount: number, currency: string = "USD"): string {
     const language = this.getCurrentLanguage();
     return new Intl.NumberFormat(language, {
-      style: 'currency',
-      currency: currency
+      style: "currency",
+      currency: currency,
     }).format(amount);
   }
 }
