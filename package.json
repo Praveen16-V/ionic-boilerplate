@@ -11,7 +11,7 @@
     "test": "ng test",
     "ionic:build": "ionic build",
     "ionic:serve": "ng serve",
-    "add-android": "npx cap add android && npm run build",
+    "add-android": "npx cap add android && ionic:build",
     "android-sync": "npx cap sync android",
     "android-run": "npx cap run android",
     "android-hotreload": "ionic capacitor run android -l --external",

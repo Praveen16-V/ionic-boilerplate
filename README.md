@@ -207,3 +207,11 @@ src/
 ## License
 
 ISC License - see LICENSE file for details.
+
+# How to do Hot reload ?
+
+1. npm run add-android
+2. npm run android-sync
+3. npm run android-hotreload
+
+# Make sure avast or any other antivirus is not blocking the hot reload. (Laptop IP)
