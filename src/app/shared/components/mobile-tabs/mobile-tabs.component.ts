@@ -4,7 +4,7 @@ import { Observable } from "rxjs";
 import { CommonModule } from "@angular/common";
 import { AuthService } from "../../../core/services/auth.service";
 import { ThemeService } from "../../../core/services/theme.service";
-import { TranslationService } from "../../../core/services/translation.service";
+import { I18nService } from "../../../core/services/i18n.service";
 import { ModalController, PopoverController } from "@ionic/angular";
 import { LanguagePopoverComponent } from "../language-popover/language-popover.component";
 import { addIcons } from "ionicons";
@@ -41,7 +41,7 @@ export class MobileTabsComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private themeService: ThemeService,
-    private translationService: TranslationService,
+    private i18nService: I18nService,
     private router: Router,
     private modalController: ModalController,
     private popoverController: PopoverController,
@@ -73,7 +73,7 @@ export class MobileTabsComponent implements OnInit {
   }
 
   setLanguage(language: string): void {
-    this.translationService.setLanguage(language as any);
+    this.i18nService.setLanguage(language);
   }
 
   toggleTheme(): void {

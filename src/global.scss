@@ -25,6 +25,14 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+/* Viewport fit for safe area support */
+html {
+  --ion-safe-area-top: env(safe-area-inset-top, 0px);
+  --ion-safe-area-bottom: env(safe-area-inset-bottom, 0px);
+  --ion-safe-area-left: env(safe-area-inset-left, 0px);
+  --ion-safe-area-right: env(safe-area-inset-right, 0px);
+}
+
 /* Global header styles */
 .app-header {
   background: var(--ion-toolbar-background);
@@ -86,6 +94,7 @@
 
     ion-button {
       cursor: pointer;
+      --color: var(--ion-text-color);
     }
 
     .language-selector {
@@ -106,6 +115,7 @@
       .user-name {
         margin-left: 0.25rem;
         font-weight: 500;
+        color: var(--ion-text-color);
       }
     }
   }
@@ -299,9 +309,34 @@ ion-content {
   .ion-page {
     height: 100vh !important; /* Override global style - full height on mobile */
     padding-bottom: 100px; /* Space for tab bar */
-    padding-top: env(safe-area-inset-top); /* Safe area for notch */
-    padding-left: env(safe-area-inset-left); /* Safe area for side */
-    padding-right: env(safe-area-inset-right); /* Safe area for side */
+    padding-top: env(safe-area-inset-top, 0px); /* Safe area for notch */
+    padding-left: env(safe-area-inset-left, 0px); /* Safe area for side */
+    padding-right: env(safe-area-inset-right, 0px); /* Safe area for side */
+  }
+
+  /* Ensure tab bar respects safe area and is positioned at bottom */
+  ion-tab-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    background: var(--ion-toolbar-background);
+    border-top: 1px solid var(--ion-border-color);
+  }
+
+  /* Android-specific safe area handling */
+  @supports (padding: max(0px)) {
+    .ion-page {
+      padding-top: max(env(safe-area-inset-top), 0px);
+      padding-left: max(env(safe-area-inset-left), 0px);
+      padding-right: max(env(safe-area-inset-right), 0px);
+    }
+
+    ion-tab-bar {
+      padding-bottom: max(env(safe-area-inset-bottom), 0px);
+    }
   }
 }
 
@@ -356,4 +391,12 @@ ion-tab-bar {
 ion-tab-button {
   --color: var(--ion-color-medium);
   --color-selected: var(--ion-color-primary);
+
+  ion-icon {
+    color: inherit;
+  }
+
+  ion-label {
+    color: inherit;
+  }
 }

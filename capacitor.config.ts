@@ -1,12 +1,15 @@
-import type { CapacitorConfig } from '@capacitor/cli';
+import type { CapacitorConfig } from "@capacitor/cli";
 
 const config: CapacitorConfig = {
-  appId: 'com.example.ionicapp',
-  appName: 'Ionic App',
-  webDir: 'dist/app',
-  server: {
-    androidScheme: 'https'
-  },
+  appId: "com.example.ionicapp",
+  appName: "Ionic App",
+  webDir: "dist/app",
+  // server: {
+  //   androidScheme: "https",
+  //   cleartext: true,
+  //   allowNavigation: ["*"],
+  //   url: "http://192.168.1.6:8100",
+  // },
   plugins: {
     SplashScreen: {
       launchShowDuration: 3000,
@@ -21,9 +24,14 @@ const config: CapacitorConfig = {
       splashFullScreen: true,
       splashImmersive: true,
       layoutName: "launch_screen",
-      useDialog: true
-    }
-  }
+      useDialog: true,
+    },
+    StatusBar: {
+      overlay: true,
+      liveUpdate: true,
+      style: "DEFAULT",
+    },
+  },
 };
 
 export default config;

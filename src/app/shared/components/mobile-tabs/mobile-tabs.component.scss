@@ -15,21 +15,23 @@
     ion-icon {
       font-size: 1.4rem;
       margin-bottom: 4px;
+      color: inherit;
     }
 
     ion-label {
       font-size: 0.75rem;
       font-weight: 500;
-      color: var(--ion-color-medium);
+      color: inherit;
     }
 
     &:active {
-      --background: var(--ion-color-light);
+      --background: var(--ion-item-background);
     }
 
     &.tab-selected {
       --color: var(--ion-color-primary);
 
+      ion-icon,
       ion-label {
         color: var(--ion-color-primary);
       }
